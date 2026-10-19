@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnChains.cc — Coming Soon</title>
+    <title>OnChains.cc — Crypto Tracing & On-Chain Forensics</title>
 
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,84 +11,107 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Style CSS -->
+    <!-- Style CSS fourni -->
     <link rel="stylesheet" href="stylenoir.css">
 
     <style>
-        /* Styles épurés spécifiques à la landing page en noir & blanc */
+        /* Surcharges et ajustements pour lisibilité parfaite en noir/blanc */
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #050505;
+            color: #f5f5f5;
+            font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
             margin: 0;
-            padding: 24px;
-            background: #050505;
         }
 
-        .landing-container {
+        .landing-wrapper {
             width: 100%;
-            max-width: 680px;
+            max-width: 860px;
             margin: 0 auto;
-            text-align: center;
+            padding: 40px 24px 60px 24px;
             position: relative;
             z-index: 10;
         }
 
-        .brand-title {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            color: #ffffff;
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .badge-status {
+        .brand-logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-tag {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #ffffff;
-            margin-bottom: 28px;
         }
 
-        .pulse-dot-white {
+        .dot-pulse {
             width: 8px;
             height: 8px;
             background-color: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: pulseWhite 2s infinite;
+            box-shadow: 0 0 8px #ffffff;
+            animation: pulseGlow 2s infinite;
         }
 
-        @keyframes pulseWhite {
+        @keyframes pulseGlow {
             0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
 
-        .description {
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-title {
+            font-size: clamp(3.2rem, 9vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
             font-size: 18px;
+            color: #b3b3b3;
+            max-width: 620px;
+            margin: 0 auto 36px auto;
             line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 36px;
-            font-weight: 400;
         }
 
-        .cta-container {
-            margin-bottom: 48px;
-        }
-
-        .btn-telegram {
+        .hero-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -105,42 +128,96 @@
             box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
         }
 
-        .btn-telegram:hover {
+        .hero-cta:hover {
             transform: translateY(-2px);
             background: #e6e6e6;
             box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
         }
 
-        .btn-telegram i {
-            font-size: 18px;
+        /* Video Showcase Section */
+        .video-section {
+            margin-bottom: 50px;
         }
 
-        /* Contacts Box */
-        .contacts-card {
-            background: rgba(13, 13, 13, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 28px;
-            text-align: left;
-            backdrop-filter: blur(10px);
-        }
-
-        .contacts-title {
-            font-size: 13px;
+        .section-label {
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            color: #808080;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
+        .video-container {
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 18px;
+            outline: none;
+        }
+
+        /* Features Focus Box */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .focus-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .focus-card i {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+
+        .focus-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .focus-card p {
+            font-size: 13px;
+            color: #999999;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Contacts Card */
+        .contacts-card {
+            background: rgba(13, 13, 13, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
         .contact-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .contact-item {
@@ -151,7 +228,7 @@
 
         .contact-label {
             font-size: 12px;
-            color: var(--text-muted);
+            color: #808080;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -164,137 +241,194 @@
             text-align: center;
         }
 
-        .contact-value-wrapper {
+        .contact-field {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 10px 14px;
+            gap: 10px;
+            background: #050505;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 16px;
         }
 
-        .contact-value {
+        .contact-val {
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
-            color: var(--text-primary);
+            color: #ffffff;
             word-break: break-all;
             flex: 1;
         }
 
         .contact-link {
-            color: var(--text-primary);
+            color: #ffffff;
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: opacity 0.2s;
         }
 
         .contact-link:hover {
-            color: #ffffff;
+            opacity: 0.8;
             text-decoration: underline;
         }
 
-        .copy-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 12px;
             cursor: pointer;
-            padding: 4px;
-            font-size: 14px;
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             flex-shrink: 0;
         }
 
-        .copy-btn:hover {
-            color: #ffffff;
+        .btn-copy:hover {
+            background: #ffffff;
+            color: #050505;
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: #666666;
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <!-- Structure de fond issue du CSS -->
+    <!-- Arrière-plan SVG & Grille du CSS original -->
     <div class="bg-effects">
         <div class="noise-overlay"></div>
         <div class="grid-overlay"></div>
     </div>
 
-    <div class="landing-container">
-        
-        <div class="badge-status">
-            <span class="pulse-dot-white"></span>
-            Opening Soon
-        </div>
+    <div class="landing-wrapper">
 
-        <h1 class="brand-title">ONCHAINS</h1>
-
-        <p class="description">
-            The ultimate toolkit for crypto tracking and on-chain forensics.
-        </p>
-
-        <div class="cta-container">
-            <a href="https://t.me/onchainsredirect" target="_blank" class="btn-telegram">
-                <i class="fa-brands fa-telegram"></i>
-                Join Telegram Group
-            </a>
-        </div>
-
-        <div class="contacts-card">
-            <div class="contacts-title">
-                <i class="fa-solid fa-address-book"></i> Direct Contacts
+        <!-- Header -->
+        <header class="top-bar">
+            <div class="brand-logo">
+                <i class="fa-solid fa-link"></i> ONCHAINS.CC
             </div>
-
-            <div class="contact-list">
-                
-                <!-- Telegram -->
-                <div class="contact-item">
-                    <div class="contact-label">
-                        <i class="fa-brands fa-telegram"></i> Telegram
-                    </div>
-                    <div class="contact-value-wrapper">
-                        <a href="https://t.me/topiaishere" target="_blank" class="contact-value contact-link">@topiaishere</a>
-                    </div>
-                </div>
-
-                <!-- Session -->
-                <div class="contact-item">
-                    <div class="contact-label">
-                        <i class="fa-solid fa-comment-dots"></i> Session ID
-                    </div>
-                    <div class="contact-value-wrapper">
-                        <span class="contact-value" id="session-id">05c217750246f7f6824026e2c475d3dc95e7e2eb5b0ab2e0798bedf090415d015a</span>
-                        <button class="copy-btn" onclick="copyToClipboard('session-id')" title="Copy ID">
-                            <i class="fa-regular fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Tox -->
-                <div class="contact-item">
-                    <div class="contact-label">
-                        <i class="fa-solid fa-shield-halved"></i> Tox ID
-                    </div>
-                    <div class="contact-value-wrapper">
-                        <span class="contact-value" id="tox-id">1584599D1C945BDBBE9E1B5CBD5CE1E866D2FC7808D37A864657C76FE9E74B10536730675A10</span>
-                        <button class="copy-btn" onclick="copyToClipboard('tox-id')" title="Copy ID">
-                            <i class="fa-regular fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-
+            <div class="status-tag">
+                <span class="dot-pulse"></span> Launching Soon
             </div>
-        </div>
+        </header>
+
+        <!-- Main Hero -->
+        <main>
+            <section class="hero">
+                <h1 class="hero-title">ONCHAINS</h1>
+                <p class="hero-subtitle">
+                    The ultimate platform for cryptocurrency tracing and on-chain forensics. Built for deep blockchain analysis and wallet tracking.
+                </p>
+                <a href="https://t.me/onchainsredirect" target="_blank" class="hero-cta">
+                    <i class="fa-brands fa-telegram"></i>
+                    Join Telegram Group
+                </a>
+            </section>
+
+            <!-- Video Showcase -->
+            <section class="video-section">
+                <div class="section-label">
+                    <i class="fa-solid fa-circle-play"></i> Video Showcase
+                </div>
+                <div class="video-container">
+                    <video controls preload="metadata" poster="">
+                        <source src="video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+            <!-- Core Focus -->
+            <section class="focus-grid">
+                <div class="focus-card">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <h3>On-Chain Forensics</h3>
+                    <p>In-depth transaction analysis and flow investigation across blockchain networks.</p>
+                </div>
+                <div class="focus-card">
+                    <i class="fa-solid fa-route"></i>
+                    <h3>Crypto Tracing</h3>
+                    <p>Follow fund movements, wallet associations, and complex transaction pathways.</p>
+                </div>
+                <div class="focus-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Monitored address tracking with instant alerts on target wallet activities.</p>
+                </div>
+            </section>
+
+            <!-- Contacts -->
+            <section class="contacts-card">
+                <div class="section-label" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-address-book"></i> Official Direct Contacts
+                </div>
+
+                <div class="contact-list">
+                    <!-- Telegram Owner -->
+                    <div class="contact-item">
+                        <div class="contact-label">
+                            <i class="fa-brands fa-telegram"></i> Telegram Owner
+                        </div>
+                        <div class="contact-field">
+                            <a href="https://t.me/topiaishere" target="_blank" class="contact-val contact-link">@topiaishere</a>
+                        </div>
+                    </div>
+
+                    <!-- Session ID -->
+                    <div class="contact-item">
+                        <div class="contact-label">
+                            <i class="fa-solid fa-comment-dots"></i> Session ID
+                        </div>
+                        <div class="contact-field">
+                            <span class="contact-val" id="session-val">05c217750246f7f6824026e2c475d3dc95e7e2eb5b0ab2e0798bedf090415d015a</span>
+                            <button class="btn-copy" onclick="copyText('session-val')">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tox ID -->
+                    <div class="contact-item">
+                        <div class="contact-label">
+                            <i class="fa-solid fa-shield-cat"></i> Tox ID
+                        </div>
+                        <div class="contact-field">
+                            <span class="contact-val" id="tox-val">1584599D1C945BDBBE9E1B5CBD5CE1E866D2FC7808D37A864657C76FE9E74B10536730675A10</span>
+                            <button class="btn-copy" onclick="copyText('tox-val')">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
     </div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        &copy; OnChains.cc — All Rights Reserved.
+    </footer>
+
     <script>
-        function copyToClipboard(elementId) {
+        function copyText(elementId) {
             const text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text).then(() => {
                 alert('Copied to clipboard!');
             }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                console.error('Copy failed: ', err);
             });
         }
     </script>
-
 </body>
 </html>
