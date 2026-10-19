@@ -159,14 +159,14 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
             position: relative;
+            aspect-ratio: 16 / 9;
         }
 
-        .video-container video {
+        .video-container iframe {
             width: 100%;
-            height: auto;
+            height: 100%;
+            border: none;
             display: block;
-            border-radius: 18px;
-            outline: none;
         }
 
         /* Features Focus Box */
@@ -335,16 +335,13 @@
                 </a>
             </section>
 
-            <!-- Video Showcase -->
+            <!-- Video Showcase (Vimeo Integration) -->
             <section class="video-section">
                 <div class="section-label">
                     <i class="fa-solid fa-circle-play"></i> Video Showcase
                 </div>
                 <div class="video-container">
-                    <video controls preload="metadata" poster="">
-                        <source src="video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="https://player.vimeo.com/video/1237391612?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="OnChains Showcase"></iframe>
                 </div>
             </section>
 
